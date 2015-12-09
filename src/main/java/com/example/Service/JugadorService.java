@@ -3,7 +3,9 @@ package com.example.Service;
 /**
  * Created by jhipster on 1/12/15.
  */
+import com.example.Model.Equipo;
 import com.example.Model.Jugador;
+import com.example.Repository.EquipoRepository;
 import com.example.Repository.JugadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,38 +18,44 @@ public class JugadorService {
     @Autowired
     private JugadorRepository jugadorRepository;
 
-    /*@Autowired
-    private EquipoRepository equipoRepository;*/
+    @Autowired
+    private EquipoRepository equipoRepository;
 
     public void testJugadores() {
         Calendar calendar = GregorianCalendar.getInstance();
 
+        Equipo equipoA = equipoRepository.findByNombreclub("EquipoA");
+        Equipo equipoB = equipoRepository.findByNombreclub("EquipoB");
+        Equipo equipoC = equipoRepository.findByNombreclub("EquipoC");
+        Equipo equipoD = equipoRepository.findByNombreclub("EquipoD");
+        Equipo equipoE = equipoRepository.findByNombreclub("EquipoE");
+
         calendar.set(1995, Calendar.JANUARY, 1);
         Jugador jugador1 = new Jugador("Jorge",calendar.getTime(),530,450,470,"Base");
 
-        //jugador1.setEquipo(equipoRepository.findByNombre("FC Barcelona"));
+        jugador1.setEquipo(equipoA);
         jugadorRepository.save(jugador1);
 
         calendar.set(1989, Calendar.FEBRUARY, 15);
         Jugador jugador2 = new Jugador("Pablo",calendar.getTime(),780,650,320,"Alero");
 
-        //jugador2.setEquipo(equipoRepository.findByNombre("Phoenix Suns"));
+        jugador2.setEquipo(equipoB);
         jugadorRepository.save(jugador2);
 
         calendar.set(1993, Calendar.MARCH, 27);
         Jugador jugador3 = new Jugador("Javier",calendar.getTime(),870,520,460,"Pivot");
-        //jugador3.setEquipo(equipoRepository.findByNombre("Real Madrid"));
+        jugador3.setEquipo(equipoC);
         jugadorRepository.save(jugador3);
 
         calendar.set(1994, Calendar.SEPTEMBER, 21);
         Jugador jugador4 = new Jugador("Fredy",calendar.getTime(),320,820,580,"Alero-Pivot");
 
-        //jugador4.setEquipo(equipoRepository.findByNombre("Boston Celtics"));
+        jugador4.setEquipo(equipoD);
         jugadorRepository.save(jugador4);
 
         calendar.set(1995, Calendar.SEPTEMBER, 11);
         Jugador jugador5 = new Jugador("Alejandro",calendar.getTime(),730,623,458,"Escolta");
-        //jugador5.setEquipo(equipoRepository.findByNombre("Houston Rockets"));
+        jugador5.setEquipo(equipoE);
         jugadorRepository.save(jugador5);
 
         System.out.println("Buscar nombre que comienze por:");

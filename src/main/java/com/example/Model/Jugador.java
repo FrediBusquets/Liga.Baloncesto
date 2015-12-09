@@ -1,16 +1,14 @@
 package com.example.Model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
+import com.example.Model.Equipo;
 /**
  * Created by jhipster on 1/12/15.
  */
 @Entity
 public class Jugador {
-/*Empezaremos con la entidad jugador. La entidad jugador tendrá los siguientes atributos:
- un identificador, un nombre, una fecha de nacimiento, un número de canastas totales,
- un número de asistencias totales, un número de rebotes totales y una posición en el
- campo por defecto (alero, base, etc.).
-*/
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
@@ -28,10 +26,10 @@ public class Jugador {
 
     private String posicion;
 
-   /* @JsonIgnore
+    @JsonIgnore
     @ManyToOne
     private Equipo equipo;
-    */
+
     public Jugador() {
     }
 
@@ -95,15 +93,15 @@ public class Jugador {
     public void setPosicion(String posicion) {
         this.posicion = posicion;
     }
-    /*
+
     public Equipo getEquipo() {
         return equipo;
     }
 
     public void setEquipo(Equipo equipo) {
-        this.Equipo = Equipo;
+        this.equipo = equipo;
     }
-    */
+
     @Override
     public String toString() {
         return "Jugador{" +
@@ -117,11 +115,3 @@ public class Jugador {
                 '}';
     }
 }
-/*
-        this.nombre = nombre;
-        this.id = id;
-        this.anotaciones = anotaciones;
-        this.asistencias = asistencias;
-        this.rebotes = rebotes;
-        this.posicion = posicion;
-        */
